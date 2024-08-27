@@ -232,4 +232,18 @@ while x==1:
     #when manager is selected-
     elif choice==3:
         print("\n\nWelcome Manager! Select action-\n 1. View product database\n 2. View employee database\n 3. View customer database\n 4. Back to main menu")
-        cr=
+        try:
+            cr=int(input("\nEnter your choice: "))
+        except ValueError:
+            print("enter only integers. try again.")
+
+        if cr==1:
+            qry="select * from products"
+            c.execute(qry,)
+            qres=c.fetchall()
+            columns=[i[0] for i in c.description]
+            df=pd.DataFrame(qres, columns=columns)
+            print("\nProduct Database:\n")
+            table(df)
+            c.close()
+            x=0
