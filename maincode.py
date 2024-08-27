@@ -247,3 +247,33 @@ while x==1:
             table(df)
             c.close()
             x=0
+
+        elif cr==2:
+            qry="select * from employees"
+            c.execute(qry,)
+            qres=c.fetchall()
+            columns=[i[0] for i in c.description]
+            df=pd.DataFrame(qres, columns=columns)
+            print("\nEmployee Database:\n")
+            table(df)
+            c.close()
+            x=0
+
+        elif cr==3:
+            qry="select * from customer_data"
+            c.execute(qry,)
+            qres=c.fetchall()
+            columns=[i[0] for i in c.description]
+            df=pd.DataFrame(qres, columns=columns)
+            print("\nCustomer Database\n")
+            table(df)
+            c.close()
+            x=0
+
+        elif cr==4:
+            print("\n\nGOING BACK TO MAIN MENU...\n\n")
+            continue
+
+        else:
+            print("Enter valid integer. Try again")
+            continue
